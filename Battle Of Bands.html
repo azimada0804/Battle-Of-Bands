@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle of Bands | Gemini & Lyria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f4f4f0; /* Off-white paper look */
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Dotted Background Pattern */
+        .bg-dots {
+            background-image: radial-gradient(#000 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            border-bottom: 4px solid #000;
+            border-top: 4px solid #000;
+            background-color: #fbbf24; /* Amber-400 */
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Neo-Brutalist Hover Effects */
+        .brutal-btn {
+            transition: all 0.15s ease;
+        }
+        .brutal-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,1) !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 12px; border-left: 3px solid #000; }
+        ::-webkit-scrollbar-track { background: #f4f4f0; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+        ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    boxShadow: {
+                        'brutal': '6px 6px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '3px 3px 0px 0px rgba(0,0,0,1)',
+                        'brutal-white': '6px 6px 0px 0px rgba(255,255,255,1)',
+                    },
+                    colors: {
+                        brutal: {
+                            yellow: '#fbbf24',
+                            pink: '#ff90e8',
+                            blue: '#3b82f6',
+                            green: '#22c55e',
+                            red: '#ef4444',
+                            cyan: '#06b6d4'
+                        }
+                    }
+                }
+            }
+        }
+
+        function copyToClipboard(textId, btnId) {
+            const text = document.getElementById(textId).innerText;
+            const btn = document.getElementById(btnId);
+            const originalText = btn.innerHTML;
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                btn.innerHTML = '<i class="fas fa-check"></i> COPIED';
+                btn.classList.replace('bg-white', 'bg-brutal-green');
+                btn.classList.replace('text-black', 'text-white');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-brutal-green', 'bg-white');
+                    btn.classList.replace('text-white', 'text-black');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+            document.body.removeChild(textArea);
+        }
+    </script>
+</head>
+<body class="bg-dots antialiased selection:bg-brutal-pink selection:text-black">
+
+    <!-- Top Marquee -->
+    <div class="marquee-container py-2 flex items-center z-50 relative top-0">
+        <div class="marquee-content font-bold text-xl uppercase tracking-widest flex items-center gap-8">
+            <span>🚀 BATTLE OF BANDS</span>
+            <span>✦</span>
+            <span>MUSIC NIGHT WITH GEMINI & LYRIA</span>
+            <span>✦</span>
+            <span>15 MINUTE CHALLENGE</span>
+            <span>✦</span>
+            <span>🚀 BATTLE OF BANDS</span>
+            <span>✦</span>
+            <span>MUSIC NIGHT WITH GEMINI & LYRIA</span>
+            <span>✦</span>
+            <span>15 MINUTE CHALLENGE</span>
+            <span>✦</span>
+            <span>🚀 BATTLE OF BANDS</span>
+            <span>✦</span>
+            <span>MUSIC NIGHT WITH GEMINI & LYRIA</span>
+            <span>✦</span>
+            <span>15 MINUTE CHALLENGE</span>
+            <span>✦</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Hero Content -->
+            <div class="space-y-8">
+                <div class="inline-block bg-brutal-blue text-white border-4 border-black font-bold px-4 py-2 uppercase tracking-wider shadow-brutal rotate-[-2deg]">
+                    GOOGLE GEMINI
+                </div>
+                
+                <h1 class="text-6xl sm:text-7xl md:text-8xl font-black uppercase leading-[0.9] tracking-tighter">
+                    Battle<br>
+                    Of<br>
+                    <span class="text-brutal-pink relative inline-block">
+                        Bands
+                        <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 15 Q 50 0, 100 15 T 195 15" fill="none" stroke="#000" stroke-width="4"/>
+                        </svg>
+                    </span>
+                </h1>
+                
+                <p class="text-xl font-medium border-l-8 border-brutal-yellow pl-4 py-2 bg-white/50 backdrop-blur-sm max-w-lg">
+                    A high-speed online competition. Build a band name, Create a poster, Generate an AI track, and pitch it live on Google Meet. <strong>Grab your chance to win Google Pixel 2a Buds</strong>
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#register" class="brutal-btn inline-block bg-brutal-red text-white border-4 border-black shadow-brutal font-bold text-xl px-8 py-4 uppercase">
+                        Register Now <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Hero Info Cards -->
+            <div class="grid grid-cols-2 gap-6 relative">
+                <!-- Decorative Star -->
+                <div class="absolute -top-10 -right-10 text-6xl text-brutal-yellow animate-spin" style="animation-duration: 10s;">✦</div>
+                
+                <div class="bg-brutal-yellow border-4 border-black p-6 shadow-brutal aspect-square flex flex-col justify-center items-center text-center transform rotate-3 hover:rotate-0 transition-transform">
+                    <i class="far fa-calendar-alt text-5xl mb-4"></i>
+                    <h3 class="font-black text-xl uppercase mb-1">Date</h3>
+                    <p class="font-bold">10th June, 2026</p>
+                </div>
+                
+                <div class="bg-brutal-cyan border-4 border-black p-6 shadow-brutal aspect-square flex flex-col justify-center items-center text-center transform -rotate-2 hover:rotate-0 transition-transform mt-8">
+                    <i class="far fa-clock text-5xl mb-4"></i>
+                    <h3 class="font-black text-xl uppercase mb-1">Time</h3>
+                    <p class="font-bold">TBA Soon</p>
+                </div>
+                
+                <div class="col-span-2 bg-white border-4 border-black p-6 shadow-brutal">
+                    <h3 class="font-black text-xl uppercase mb-3 border-b-4 border-black pb-2">The Mission</h3>
+                    <ul class="space-y-2 font-bold">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-square text-brutal-pink text-xl"></i> Form a Band Name</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-square text-brutal-pink text-xl"></i> Design a Band Poster Using Google Gemini</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-square text-brutal-pink text-xl"></i> Generate a Music Track Using Gemini's Lyria AI</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-square text-brutal-pink text-xl"></i> Present to the Crowd</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Detailed Steps Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 relative">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-6xl font-black uppercase inline-block bg-black text-white px-6 py-2 shadow-brutal-lg transform -rotate-1">
+                The Blueprint
+            </h2>
+        </div>
+
+        <!-- Row 1: Steps 1 & 2 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Step 1 -->
+            <div class="bg-white border-4 border-black shadow-brutal-lg p-6 md:p-8 relative">
+                <div class="absolute -top-6 -left-6 w-12 h-12 bg-black text-white flex items-center justify-center font-black text-2xl border-4 border-brutal-pink shadow-brutal rounded-full z-10">1</div>
+                
+                <h3 class="text-3xl font-black uppercase mb-4 border-b-4 border-black pb-2 flex items-center justify-between">
+                    Squad Up
+                    <i class="fas fa-users text-brutal-blue"></i>
+                </h3>
+                
+                <ul class="font-bold text-lg space-y-3 mb-6">
+                    <li>👉 Max <span class="bg-brutal-yellow px-2 py-1 border-2 border-black">3 members</span> per team.</li>
+                    <li>👉 Brainstorm a unique band name.</li>
+                    <li>👉 All members <span class="underline decoration-4 decoration-brutal-red">MUST</span> be present.</li>
+                </ul>
+                
+                <div class="bg-gray-100 border-4 border-black p-4 border-dashed">
+                    <p class="font-black uppercase text-sm mb-2 text-gray-500">Name Inspo:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white border-2 border-black font-bold px-3 py-1 shadow-brutal-sm">The Rock Rebels</span>
+                        <span class="bg-white border-2 border-black font-bold px-3 py-1 shadow-brutal-sm">Midnight Warriors</span>
+                        <span class="bg-white border-2 border-black font-bold px-3 py-1 shadow-brutal-sm">Campus Chaos</span>
+                        <span class="bg-white border-2 border-black font-bold px-3 py-1 shadow-brutal-sm">Dream Chasers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-brutal-pink border-4 border-black shadow-brutal-lg p-6 md:p-8 relative">
+                <div class="absolute -top-6 -left-6 w-12 h-12 bg-black text-white flex items-center justify-center font-black text-2xl border-4 border-brutal-yellow shadow-brutal rounded-full z-10">2</div>
+                
+                <h3 class="text-3xl font-black uppercase mb-4 border-b-4 border-black pb-2 flex items-center justify-between">
+                    Identity Check
+                    <i class="fas fa-fingerprint text-white"></i>
+                </h3>
+                
+                <p class="font-bold text-lg mb-6 bg-white p-3 border-2 border-black">
+                    Who are you? Pick your campus vibe, a "beef" (complaint), and one defining word.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white border-4 border-black p-4 shadow-brutal-sm">
+                        <h4 class="font-black uppercase mb-2 bg-black text-white inline-block px-2">Beefs</h4>
+                        <ul class="font-bold text-sm space-y-1">
+                            <li>🔥 Slow WiFi</li>
+                            <li>🔥 Long Lectures</li>
+                            <li>🔥 Canteen Food</li>
+                            <li>🔥 Assignments</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white border-4 border-black p-4 shadow-brutal-sm">
+                        <h4 class="font-black uppercase mb-2 bg-black text-white inline-block px-2">1 Word</h4>
+                        <ul class="font-bold text-sm space-y-1">
+                            <li>⚡ Fearless</li>
+                            <li>⚡ Gamers</li>
+                            <li>⚡ Rebels</li>
+                            <li>⚡ Hustlers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Full Width -->
+        <div class="bg-brutal-blue border-4 border-black shadow-brutal-lg p-6 md:p-8 relative text-white">
+            <div class="absolute -top-6 -left-6 w-12 h-12 bg-black text-white flex items-center justify-center font-black text-2xl border-4 border-brutal-cyan shadow-brutal rounded-full z-10">3</div>
+            
+            <h3 class="text-3xl font-black uppercase mb-4 border-b-4 border-white pb-2 flex items-center justify-between">
+                Generate Visuals
+                <i class="fas fa-paint-brush text-brutal-yellow"></i>
+            </h3>
+            
+            <p class="font-bold text-lg mb-6 max-w-3xl">
+                Fire up Google Gemini and generate your Band Poster. It <span class="bg-brutal-red px-2 border-2 border-black">MUST include your Band Name.</span> Add your motto or campus name for extra flair.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Prompt Card 1 -->
+                <div class="bg-white text-black border-4 border-black shadow-brutal-white p-0 flex flex-col">
+                    <div class="bg-black text-white font-bold px-4 py-2 flex justify-between items-center border-b-4 border-black">
+                        <span>EXAMPLE PROMPT 01</span>
+                        <button id="copy1" onclick="copyToClipboard('text1', 'copy1')" class="brutal-btn bg-white text-black text-xs px-3 py-1 border-2 border-black hover:bg-brutal-yellow">
+                            <i class="fas fa-copy"></i> COPY
+                        </button>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <p id="text1" class="font-mono text-sm font-bold leading-relaxed">
+                            "Create a modern music band poster for a band called 'The Rock Rebels'. Energetic college music vibe, neon lights, stage performance atmosphere, vibrant colors, stylish typography, concert poster design, professional and eye-catching."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Prompt Card 2 -->
+                <div class="bg-white text-black border-4 border-black shadow-brutal-white p-0 flex flex-col">
+                    <div class="bg-black text-white font-bold px-4 py-2 flex justify-between items-center border-b-4 border-black">
+                        <span>EXAMPLE PROMPT 02</span>
+                        <button id="copy2" onclick="copyToClipboard('text2', 'copy2')" class="brutal-btn bg-white text-black text-xs px-3 py-1 border-2 border-black hover:bg-brutal-yellow">
+                            <i class="fas fa-copy"></i> COPY
+                        </button>
+                    </div>
+                    <div class="p-4 flex-grow">
+                        <p id="text2" class="font-mono text-sm font-bold leading-relaxed">
+                            "Create a futuristic music band poster for a band named 'Campus Chaos'. College students, energetic vibe, blue and purple neon lights, modern concert poster, bold title, highly detailed, creative and fun."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 & 5: Full Width -->
+        <div class="bg-brutal-yellow border-4 border-black shadow-brutal-lg p-6 md:p-10 relative">
+            <div class="absolute -top-6 -left-6 w-12 h-12 bg-black text-white flex items-center justify-center font-black text-2xl border-4 border-brutal-red shadow-brutal rounded-full z-10">4</div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-4 border-black pb-4 mb-6 gap-4">
+                <h3 class="text-3xl md:text-4xl font-black uppercase flex items-center gap-3">
+                    <i class="fas fa-headphones-alt"></i> Drop The Track
+                </h3>
+                <div class="bg-white border-4 border-black px-4 py-2 shadow-brutal-sm font-bold whitespace-nowrap">
+                    Steps 4 & 5
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Instructions -->
+                <div class="lg:col-span-1 space-y-4">
+                    <div class="bg-white border-4 border-black p-4 shadow-brutal-sm">
+                        <h4 class="font-black uppercase text-xl mb-3 border-b-2 border-black pb-1">How To:</h4>
+                        <ol class="font-bold space-y-3 list-decimal list-inside text-lg">
+                            <li>Open Google Gemini.</li>
+                            <li>Click the <span class="bg-black text-white px-2 py-0.5 rounded-full inline-flex items-center justify-center w-6 h-6">+</span> icon.</li>
+                            <li>Select <strong>Generate Music</strong>.</li>
+                            <li>Paste prompt & generate.</li>
+                        </ol>
+                    </div>
+                    <div class="bg-brutal-green border-4 border-black p-4 text-center shadow-brutal-sm transform rotate-2">
+                        <p class="font-black uppercase text-xl text-white drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                            Generate multiple times until you find a banger! 🔥
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Prompt Block -->
+                <div class="lg:col-span-2">
+                    <div class="bg-black text-white border-4 border-black p-1 shadow-brutal">
+                        <div class="border-2 border-white border-dashed p-6 relative">
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-brutal-blue text-white px-2 py-1 text-xs font-black uppercase border-2 border-white">Band: The Rock Rebels</span>
+                                <span class="bg-brutal-pink text-black px-2 py-1 text-xs font-black uppercase border-2 border-white">Vibe: Fun College Life</span>
+                                <span class="bg-brutal-yellow text-black px-2 py-1 text-xs font-black uppercase border-2 border-white">Beef: Slow WiFi</span>
+                            </div>
+                            
+                            <p id="text3" class="font-mono text-lg font-bold leading-relaxed mb-6 text-brutal-cyan">
+                                "Create an energetic college anthem for our band 'The Rock Rebels'. Our campus vibe is fun, energetic and full of memories. Our biggest campus beef is slow WiFi. We are fearless and ambitious students. Make the song catchy, humorous, uplifting and suitable for a college festival."
+                            </p>
+                            
+                            <div class="text-right">
+                                <button id="copy3" onclick="copyToClipboard('text3', 'copy3')" class="brutal-btn bg-brutal-yellow text-black border-4 border-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] font-black text-lg px-6 py-2 uppercase hover:bg-white">
+                                    <i class="fas fa-copy"></i> Copy Prompt
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6: Presentation -->
+        <div class="bg-white border-4 border-black shadow-brutal-lg p-6 md:p-8 relative">
+            <div class="absolute -top-6 -left-6 w-12 h-12 bg-black text-white flex items-center justify-center font-black text-2xl border-4 border-brutal-green shadow-brutal rounded-full z-10">6</div>
+            
+            <h3 class="text-3xl font-black uppercase mb-6 border-b-4 border-black pb-2">
+                Live Pitch (60 Seconds) 🎤
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <ul class="font-bold text-xl space-y-4">
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-black text-white flex justify-center items-center rounded-sm">1</div>
+                        Present Band Name
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-black text-white flex justify-center items-center rounded-sm">2</div>
+                        Show Poster
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-black text-white flex justify-center items-center rounded-sm">3</div>
+                        Play the Track
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-black text-white flex justify-center items-center rounded-sm">4</div>
+                        Explain your Vibe & Beef
+                    </li>
+                </ul>
+
+                <div class="bg-gray-100 border-4 border-black p-6 shadow-brutal text-center">
+                    <h4 class="font-black text-2xl uppercase mb-4">Crowd Voting</h4>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-brutal-green border-4 border-black py-3 font-black text-2xl shadow-brutal-sm transform -rotate-1">
+                            🔥 THIS SLAPS
+                        </div>
+                        <div class="bg-gray-300 border-4 border-black py-3 font-black text-2xl shadow-brutal-sm transform rotate-1 text-gray-600">
+                            😴 THIS FLOPS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mandatory Submission Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" id="register">
+        <div class="bg-brutal-red border-8 border-black shadow-brutal-lg p-8 md:p-12 relative overflow-hidden">
+            <!-- Warning Tape -->
+            <div class="absolute top-4 left-[-50px] w-[200%] bg-brutal-yellow border-y-4 border-black font-black text-sm uppercase flex gap-4 py-1 transform -rotate-2 overflow-hidden z-0 opacity-80 pointer-events-none">
+                <span>WARNING</span><span>MANDATORY</span><span>WARNING</span><span>MANDATORY</span><span>WARNING</span><span>MANDATORY</span><span>WARNING</span><span>MANDATORY</span><span>WARNING</span><span>MANDATORY</span>
+            </div>
+
+            <div class="relative z-10">
+                <div class="inline-block bg-black text-white px-4 py-2 font-black text-2xl uppercase mb-6 shadow-brutal-white transform rotate-1">
+                    Final Boss: Submission
+                </div>
+                
+                <p class="text-white text-2xl font-bold mb-8 max-w-3xl leading-snug drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                    You will get a Submission Form During The Event. Fill that form with accurate details including your BAND POSTER, MUSIC TRACK Generation Link. <span class="bg-black text-brutal-red px-2 underline decoration-4"> Please Note : </span> Your Form will <span class="bg-black text-brutal-red px-2 underline decoration-4">WILL NOT</span> be evaluated, if you do not submit the form during the event.
+                </p>
+
+                
+                        <div class="space-y-3 font-bold text-lg">
+                            <label class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-1">
+                            
+
+                    <div class="flex flex-col justify-center items-center bg-black border-4 border-white p-2 text-center shadow-brutal-white transform rotate-1">
+                        <h4 class="text-white font-black text-2xl uppercase mb-6">Ready to drop?</h4>
+                        <a href="http://tinyurl.com/GeminiBattleOfBands" target="_blank" class="brutal-btn block w-full bg-brutal-yellow text-black border-4 border-white font-black text-2xl uppercase py-4 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:bg-white transition-colors">
+                            Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t-8 border-brutal-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-black uppercase mb-4 text-brutal-cyan">
+                Be Creative. Be Funny. Be Original.
+            </h2>
+            <p class="text-xl font-bold max-w-2xl mx-auto mb-8 text-gray-300">
+                Your campus stories, inside jokes, struggles and memories can make the best anthem!
+            </p>
+            <div class="inline-block bg-brutal-pink text-black border-4 border-white font-black text-2xl uppercase px-8 py-3 shadow-brutal-white transform -rotate-2">
+                May the best band win 🎸
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
